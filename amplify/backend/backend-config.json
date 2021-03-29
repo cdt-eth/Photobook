@@ -1,1 +1,10 @@
-{}
+{
+  "auth": {
+    "amplifyphotobookd4634aad": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
