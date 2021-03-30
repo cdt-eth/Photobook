@@ -1,7 +1,7 @@
 import { Auth } from "aws-amplify";
 
 export const auth = {
-  namespace: true,
+  namespaced: true,
   state: { user: null },
   mutations: {
     //   if you commit this mutation, it passes the payload as the user
