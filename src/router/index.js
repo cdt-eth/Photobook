@@ -1,11 +1,32 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import SignUpPage from "../views/SignUpPage.vue";
+import AlbumsPage from "../views/AlbumsPage.vue";
+import AlbumsDetailPage from "../views/AlbumsDetailPage.vue";
 
 const routes = [
   {
     path: "/",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/signup",
+    name: "SignUpPage",
+    component: SignUpPage,
+  },
+  {
+    // adding the `:id` makes it dynamic
+    path: "/album/:id",
+    name: "AlbumsDetailPage",
+    component: AlbumsDetailPage,
+    meta: { requiresAuth: true }, // prevents a user from seeing the page unless they're signed in
+  },
+  {
+    path: "/albums/",
+    name: "AlbumsPage",
+    component: AlbumsPage,
+    meta: { requiresAuth: true },
   },
   {
     path: "/about",
