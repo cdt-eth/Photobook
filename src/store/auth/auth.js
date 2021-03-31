@@ -36,11 +36,11 @@ export const auth = {
     // signup confirmation
     async confirmSignUp(_, { username, code }) {
       try {
-        await Auth.confirmSignUp((username, code));
+        await Auth.confirmSignUp(username, code);
         return Promise.resolve();
       } catch (error) {
         console.log(error);
-        return Promise.reject();
+        return Promise.reject(error);
       }
     },
     // signup

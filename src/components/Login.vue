@@ -22,6 +22,7 @@
           v-model="password"
         />
       </div>
+      <!-- eslint-disable -->
       <button class="btn-blue">Sign in</button>
     </form>
     <div class="text-red-600">{{ error.message }}</div>
@@ -47,10 +48,13 @@ export default {
     // assign data to user's login data
     async login() {
       try {
+        const { username, password } = this;
         await this.loginVue({
-          username: this.username,
-          password: this.password,
+          username,
+          password,
         });
+
+        this.$router.push("/albums");
       } catch (error) {
         this.error = error;
       }

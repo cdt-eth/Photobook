@@ -38,6 +38,7 @@
           v-model="email"
         />
       </div>
+      <!-- eslint-disable -->
       <button class="btn-blue">Sign Up</button>
     </form>
     <div v-if="error" class="text-red-600">{{ error.message }}</div>
@@ -82,31 +83,37 @@ export default {
           password,
           email,
         });
+
+        this.confirmPassword = true;
       } catch (error) {
+        console.log(error);
         this.error = error;
       }
     },
-  },
-  async confirmSignUp() {
-    if (!this.username || !this.code) {
-      return;
-    }
-    try {
-      const { username, password, code } = this;
+    async confirmSignUp() {
+      if (!this.username || !this.code) {
+        return;
+      }
 
-      await this.$store.dispatch("auth/confirmSignUp", {
-        username,
-        code,
-      });
-      await this.$store.dispatch("authlogin", {
-        username,
-        password,
-      });
-      this.$router.push("/albums");
-    } catch (error) {
-      console.log(error);
-      this.error = error;
-    }
+      try {
+        const { username, password, code } = this;
+
+        await this.$store.dispatch("auth/confirmSignUp", {
+          username,
+          code,
+        });
+
+        await this.$store.dispatch("auth/login", {
+          username,
+          password,
+        });
+
+        this.$router.push("/albums");
+      } catch (error) {
+        console.log(error);
+        this.error = error;
+      }
+    },
   },
 };
 </script>

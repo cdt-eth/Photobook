@@ -2,9 +2,19 @@
   <div id="nav">
     <!-- <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> -->
+    <Nav />
   </div>
   <router-view />
 </template>
+
+<script>
+import Nav from "@/components/Nav.vue";
+export default {
+  components: {
+    Nav,
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
